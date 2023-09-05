@@ -246,9 +246,6 @@ groups:
         tag: connection-level
       - ref: network.type
         tag: connection-level
-      - ref: server.socket.domain
-        requirement_level:
-          recommended: If different than `server.address` and if `server.socket.address` is set.
     constraints:
       - any_of:
           - 'server.address'

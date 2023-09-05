@@ -8,7 +8,7 @@ groups:
       - id: sock.peer.name
         type: string
         stability: deprecated
-        brief: Deprecated, use `server.socket.domain` on client spans.
+        brief: Deprecated, use `server.socket.address` on client spans.
         examples: ['/var/my.sock']
       - id: sock.peer.addr
         type: string

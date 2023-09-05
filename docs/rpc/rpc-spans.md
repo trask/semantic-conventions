@@ -92,7 +92,7 @@ Examples of span names:
 | [`network.type`](../general/attributes.md) | string | [OSI Network Layer](https://osi-model.com/network-layer/) or non-OSI equivalent. The value SHOULD be normalized to lowercase. | `ipv4`; `ipv6` | Recommended |
 | [`server.address`](../general/attributes.md) | string | RPC server [host name](https://grpc.github.io/grpc/core/md_doc_naming.html). [3] | `example.com` | Required |
 | [`server.port`](../general/attributes.md) | int | Server port number [4] | `80`; `8080`; `443` | Conditionally Required: See below |
-| [`server.socket.address`](../general/attributes.md) | string | Server address of the socket connection - IP address or Unix domain socket name. [5] | `10.5.3.2` | See below |
+| [`server.socket.address`](../general/attributes.md) | string | Server address of the immediate peer connection - domain name if available without reverse DNS lookup, otherwise IP address or Unix domain socket name. [5] | `proxy.example.com`; `10.5.3.2` | See below |
 | [`server.socket.port`](../general/attributes.md) | int | Server port number of the socket connection. [6] | `16456` | Recommended: [7] |
 
 **[1]:** This is the logical name of the service from the RPC interface perspective, which can be different from the name of any implementing class. The `code.namespace` attribute may be used to store the latter (despite the attribute name, it may include a class name; e.g., class with method actually executing the call on the server side, RPC client stub class on the client side).
@@ -144,26 +144,14 @@ Generally, a user SHOULD NOT set `peer.service` to a fully qualified RPC service
 [`service.name`]: /docs/resource/README.md#service
 [`peer.service`]: /docs/general/attributes.md#general-remote-service-attributes
 
-### Client attributes
-
-<!-- semconv rpc.client -->
-| Attribute  | Type | Description  | Examples  | Requirement Level |
-|---|---|---|---|---|
-| [`server.socket.domain`](../general/attributes.md) | string | Immediate server peer's domain name if available without reverse DNS lookup [1] | `proxy.example.com` | Recommended: [2] |
-
-**[1]:** Typically observed from the client side, and represents a proxy or other intermediary domain name.
-
-**[2]:** If different than `server.address` and if `server.socket.address` is set.
-<!-- endsemconv -->
-
 ### Server attributes
 
 <!-- semconv rpc.server -->
 | Attribute  | Type | Description  | Examples  | Requirement Level |
 |---|---|---|---|---|
-| [`client.address`](../general/attributes.md) | string | Client address - IP address or Unix domain socket name. [1] | `/tmp/my.sock`; `10.1.2.80` | Recommended |
+| [`client.address`](../general/attributes.md) | string | Client address - domain name if available without reverse DNS lookup, otherwise IP address or Unix domain socket name. [1] | `/tmp/my.sock`; `10.1.2.80` | Recommended |
 | [`client.port`](../general/attributes.md) | int | Client port number. [2] | `65123` | Recommended |
-| [`client.socket.address`](../general/attributes.md) | string | Client address of the socket connection - IP address or Unix domain socket name. [3] | `/tmp/my.sock`; `127.0.0.1` | Recommended: If different than `client.address`. |
+| [`client.socket.address`](../general/attributes.md) | string | Client address of the immediate peer connection - domain name if available without reverse DNS lookup, otherwise IP address or Unix domain socket name. [3] | `/tmp/my.sock`; `127.0.0.1` | Recommended: If different than `client.address`. |
 | [`client.socket.port`](../general/attributes.md) | int | Client port number of the socket connection. [4] | `35555` | Recommended: If different than `client.port`. |
 | [`network.transport`](../general/attributes.md) | string | [OSI Transport Layer](https://osi-model.com/transport-layer/) or [Inter-process Communication method](https://en.wikipedia.org/wiki/Inter-process_communication). The value SHOULD be normalized to lowercase. | `tcp`; `udp` | Recommended |
 | [`network.type`](../general/attributes.md) | string | [OSI Network Layer](https://osi-model.com/network-layer/) or non-OSI equivalent. The value SHOULD be normalized to lowercase. | `ipv4`; `ipv6` | Recommended |

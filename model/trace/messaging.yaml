@@ -175,10 +175,6 @@ groups:
         tag: connection-level
       - ref: network.type
         tag: connection-level
-      - ref: server.socket.domain
-        tag: connection-level
-        requirement_level:
-          recommended: If different than `server.address` and if `server.socket.address` is set.
       - ref: network.protocol.name
         examples: ['amqp', 'mqtt']
       - ref: network.protocol.version

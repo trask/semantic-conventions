@@ -77,7 +77,6 @@ groups:
         note: >
           When [request target](https://www.rfc-editor.org/rfc/rfc9110.html#target.resource) is absolute URI, `server.port` MUST match
           URI port identifier, otherwise it MUST match `Host` header port identifier.
-      - ref: server.socket.domain
       - ref: server.socket.address
       - ref: server.socket.port
       - ref: url.full

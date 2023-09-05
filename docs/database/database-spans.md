@@ -71,7 +71,7 @@ Some database systems may allow a connection to switch to a different `db.user`,
 | [`network.type`](../general/attributes.md) | string | [OSI Network Layer](https://osi-model.com/network-layer/) or non-OSI equivalent. The value SHOULD be normalized to lowercase. | `ipv4`; `ipv6` | Recommended |
 | [`server.address`](../general/attributes.md) | string | Name of the database host. [1] | `example.com` | Conditionally Required: See alternative attributes below. |
 | [`server.port`](../general/attributes.md) | int | Server port number [2] | `80`; `8080`; `443` | Conditionally Required: [3] |
-| [`server.socket.address`](../general/attributes.md) | string | Server address of the socket connection - IP address or Unix domain socket name. [4] | `10.5.3.2` | See below |
+| [`server.socket.address`](../general/attributes.md) | string | Server address of the immediate peer connection - domain name if available without reverse DNS lookup, otherwise IP address or Unix domain socket name. [4] | `proxy.example.com`; `10.5.3.2` | See below |
 | [`server.socket.port`](../general/attributes.md) | int | Server port number of the socket connection. [5] | `16456` | Recommended: If different than `server.port`. |
 
 **[1]:** When observed from the client side, and when communicating through an intermediary, `server.address` SHOULD represent

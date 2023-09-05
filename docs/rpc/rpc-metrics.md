@@ -199,7 +199,7 @@ measurements.
 | [`network.type`](../general/attributes.md) | string | [OSI Network Layer](https://osi-model.com/network-layer/) or non-OSI equivalent. The value SHOULD be normalized to lowercase. | `ipv4`; `ipv6` | Recommended |
 | [`server.address`](../general/attributes.md) | string | RPC server [host name](https://grpc.github.io/grpc/core/md_doc_naming.html). [3] | `example.com` | Required |
 | [`server.port`](../general/attributes.md) | int | Server port number [4] | `80`; `8080`; `443` | Conditionally Required: See below |
-| [`server.socket.address`](../general/attributes.md) | string | Server address of the socket connection - IP address or Unix domain socket name. [5] | `10.5.3.2` | See below |
+| [`server.socket.address`](../general/attributes.md) | string | Server address of the immediate peer connection - domain name if available without reverse DNS lookup, otherwise IP address or Unix domain socket name. [5] | `proxy.example.com`; `10.5.3.2` | See below |
 | [`server.socket.port`](../general/attributes.md) | int | Server port number of the socket connection. [6] | `16456` | Recommended: [7] |
 
 **[1]:** This is the logical name of the service from the RPC interface perspective, which can be different from the name of any implementing class. The `code.namespace` attribute may be used to store the latter (despite the attribute name, it may include a class name; e.g., class with method actually executing the call on the server side, RPC client stub class on the client side).
