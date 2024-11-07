@@ -27,7 +27,7 @@ The Semantic Conventions for *MariaDB* extend and override the [Database Semanti
 | [`db.response.status_code`](/docs/attributes-registry/db.md) | string | [Maria DB error code](https://mariadb.com/kb/en/mariadb-error-code-reference/) represented as a string. [6] | `1008`; `3058` | `Conditionally Required` If response has ended with warning or an error. | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
 | [`error.type`](/docs/attributes-registry/error.md) | string | Describes a class of error the operation ended with. [7] | `timeout`; `java.net.UnknownHostException`; `server_certificate_invalid`; `500` | `Conditionally Required` If and only if the operation failed. | ![Stable](https://img.shields.io/badge/-stable-lightgreen) |
 | [`server.port`](/docs/attributes-registry/server.md) | int | Server port number. [8] | `80`; `8080`; `443` | `Conditionally Required` [9] | ![Stable](https://img.shields.io/badge/-stable-lightgreen) |
-| [`db.operation.batch.size`](/docs/attributes-registry/db.md) | int | The number of queries included in a batch operation. [10] | `2`; `3`; `4` | `Recommended` | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
+| [`db.batch.size`](/docs/attributes-registry/db.md) | int | The number of queries included in a batch operation. [10] | `2`; `3`; `4` | `Recommended` | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
 | [`db.query.summary`](/docs/attributes-registry/db.md) | string | Low cardinality representation of a database query text. [11] | `SELECT wuser_table`; `INSERT shipping_details SELECT orders`; `get user by id` | `Recommended` [12] | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
 | [`db.query.text`](/docs/attributes-registry/db.md) | string | The database query being executed. [13] | `SELECT * FROM wuser_table where username = ?`; `SET mykey ?` | `Recommended` [14] | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
 | [`db.response.returned_rows`](/docs/attributes-registry/db.md) | int | Number of rows returned by the operation. | `10`; `30`; `1000` | `Recommended` | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
@@ -111,7 +111,7 @@ Instrumentations SHOULD document how `error.type` is populated.
 
 **[9]:** If using a port other than the default port for this DBMS and if `server.address` is set.
 
-**[10]:** Operations are only considered batches when they contain two or more operations, and so `db.operation.batch.size` SHOULD never be `1`.
+**[10]:** Operations are only considered batches when they contain two or more operations, and so `db.batch.size` SHOULD never be `1`.
 This attribute has stability level RELEASE CANDIDATE.
 
 **[11]:** `db.query.summary` provides static summary of the query text. It describes a class of database queries and is useful as a grouping key, especially when analyzing telemetry for database calls involving complex queries.

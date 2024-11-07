@@ -19,11 +19,11 @@ This group defines the attributes used to describe telemetry in the context of d
 
 | Attribute | Type | Description | Examples | Stability |
 |---|---|---|---|---|
+| <a id="db-batch-size" href="#db-batch-size">`db.batch.size`</a> | int | The number of queries included in a batch operation. [1] | `2`; `3`; `4` | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
 | <a id="db-client-connection-pool-name" href="#db-client-connection-pool-name">`db.client.connection.pool.name`</a> | string | The name of the connection pool; unique within the instrumented application. In case the connection pool implementation doesn't provide a name, instrumentation SHOULD use a combination of parameters that would make the name unique, for example, combining attributes `server.address`, `server.port`, and `db.namespace`, formatted as `server.address:server.port/db.namespace`. Instrumentations that generate connection pool name following different patterns SHOULD document it. | `myDataSource` | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
 | <a id="db-client-connection-state" href="#db-client-connection-state">`db.client.connection.state`</a> | string | The state of a connection in the pool | `idle` | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
-| <a id="db-collection-name" href="#db-collection-name">`db.collection.name`</a> | string | The name of a collection (table, container) within the database. [1] | `public.users`; `customers` | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
-| <a id="db-namespace" href="#db-namespace">`db.namespace`</a> | string | The name of the database, fully qualified within the server address and port. [2] | `customers`; `test.users` | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
-| <a id="db-operation-batch-size" href="#db-operation-batch-size">`db.operation.batch.size`</a> | int | The number of queries included in a batch operation. [3] | `2`; `3`; `4` | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
+| <a id="db-collection-name" href="#db-collection-name">`db.collection.name`</a> | string | The name of a collection (table, container) within the database. [2] | `public.users`; `customers` | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
+| <a id="db-namespace" href="#db-namespace">`db.namespace`</a> | string | The name of the database, fully qualified within the server address and port. [3] | `customers`; `test.users` | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
 | <a id="db-operation-name" href="#db-operation-name">`db.operation.name`</a> | string | The name of the operation or command being executed. [4] | `findAndModify`; `HMSET`; `SELECT` | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
 | <a id="db-query-parameter" href="#db-query-parameter">`db.query.parameter.<key>`</a> | string | A query parameter used in `db.query.text`, with `<key>` being the parameter name, and the attribute value being a string representation of the parameter value. [5] | `someval`; `55` | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
 | <a id="db-query-summary" href="#db-query-summary">`db.query.summary`</a> | string | Low cardinality representation of a database query text. [6] | `SELECT wuser_table`; `INSERT shipping_details SELECT orders`; `get user by id` | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
@@ -32,7 +32,10 @@ This group defines the attributes used to describe telemetry in the context of d
 | <a id="db-response-status-code" href="#db-response-status-code">`db.response.status_code`</a> | string | Database response status code. [8] | `102`; `ORA-17002`; `08P01`; `404` | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
 | <a id="db-system" href="#db-system">`db.system`</a> | string | The database management system (DBMS) product as identified by the client instrumentation. [9] | `other_sql`; `adabas`; `cache` | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
 
-**[1]:** It is RECOMMENDED to capture the value as provided by the application without attempting to do any case normalization.
+**[1]:** Operations are only considered batches when they contain two or more operations, and so `db.batch.size` SHOULD never be `1`.
+This attribute has stability level RELEASE CANDIDATE.
+
+**[2]:** It is RECOMMENDED to capture the value as provided by the application without attempting to do any case normalization.
 
 A single database query may involve multiple collections.
 
@@ -48,12 +51,9 @@ SHOULD NOT be captured.
 
 This attribute has stability level RELEASE CANDIDATE.
 
-**[2]:** If a database system has multiple namespace components, they SHOULD be concatenated (potentially using database system specific conventions) from most general to most specific namespace component, and more specific namespaces SHOULD NOT be captured without the more general namespaces, to ensure that "startswith" queries for the more general namespaces will be valid.
+**[3]:** If a database system has multiple namespace components, they SHOULD be concatenated (potentially using database system specific conventions) from most general to most specific namespace component, and more specific namespaces SHOULD NOT be captured without the more general namespaces, to ensure that "startswith" queries for the more general namespaces will be valid.
 Semantic conventions for individual database systems SHOULD document what `db.namespace` means in the context of that system.
 It is RECOMMENDED to capture the value as provided by the application without attempting to do any case normalization.
-This attribute has stability level RELEASE CANDIDATE.
-
-**[3]:** Operations are only considered batches when they contain two or more operations, and so `db.operation.batch.size` SHOULD never be `1`.
 This attribute has stability level RELEASE CANDIDATE.
 
 **[4]:** It is RECOMMENDED to capture the value as provided by the application

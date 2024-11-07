@@ -124,13 +124,13 @@ groups:
             'INSERT shipping_details SELECT orders',
             'get user by id',
           ]
-      - id: db.operation.batch.size
+      - id: db.batch.size
         type: int
         stability: experimental  # RELEASE CANDIDATE
         brief: The number of queries included in a batch operation.
         note: >
           Operations are only considered batches when they contain two or more operations,
-          and so `db.operation.batch.size` SHOULD never be `1`.
+          and so `db.batch.size` SHOULD never be `1`.
 
           This attribute has stability level RELEASE CANDIDATE.
         examples: [2, 3, 4]

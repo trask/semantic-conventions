@@ -27,7 +27,7 @@ The Semantic Conventions for [HBase](https://hbase.apache.org/) extend and overr
 | [`db.response.status_code`](/docs/attributes-registry/db.md) | string | Protocol-specific response code recorded as string. [4] | `200`; `409`; `14` | `Conditionally Required` If response was received. | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
 | [`error.type`](/docs/attributes-registry/error.md) | string | Describes a class of error the operation ended with. [5] | `timeout`; `java.net.UnknownHostException`; `server_certificate_invalid`; `500` | `Conditionally Required` If and only if the operation failed. | ![Stable](https://img.shields.io/badge/-stable-lightgreen) |
 | [`server.port`](/docs/attributes-registry/server.md) | int | Server port number. [6] | `80`; `8080`; `443` | `Conditionally Required` [7] | ![Stable](https://img.shields.io/badge/-stable-lightgreen) |
-| [`db.operation.batch.size`](/docs/attributes-registry/db.md) | int | The number of queries included in a batch operation. [8] | `2`; `3`; `4` | `Recommended` | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
+| [`db.batch.size`](/docs/attributes-registry/db.md) | int | The number of queries included in a batch operation. [8] | `2`; `3`; `4` | `Recommended` | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
 | [`server.address`](/docs/attributes-registry/server.md) | string | Name of the database host. [9] | `example.com`; `10.1.2.80`; `/tmp/my.sock` | `Recommended` | ![Stable](https://img.shields.io/badge/-stable-lightgreen) |
 
 **[1]:** If table name includes the namespace, the `db.collection.name` SHOULD be set to the full table name.
@@ -64,7 +64,7 @@ Instrumentations SHOULD document how `error.type` is populated.
 
 **[7]:** If using a port other than the default port for this DBMS and if `server.address` is set.
 
-**[8]:** Operations are only considered batches when they contain two or more operations, and so `db.operation.batch.size` SHOULD never be `1`.
+**[8]:** Operations are only considered batches when they contain two or more operations, and so `db.batch.size` SHOULD never be `1`.
 This attribute has stability level RELEASE CANDIDATE.
 
 **[9]:** When observed from the client side, and when communicating through an intermediary, `server.address` SHOULD represent the server address behind any intermediaries, for example proxies, if it's available.

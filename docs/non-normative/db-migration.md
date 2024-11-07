@@ -49,7 +49,7 @@ to
 | `db.cassandra.table` &rarr; `db.collection.name`    |                                                                                                             |
 | `db.mongodb.collection` &rarr; `db.collection.name` |                                                                                                             |
 | `db.cosmosdb.container` &rarr; `db.collection.name` |                                                                                                             |
-| New: `db.operation.batch.size`                      |                                                                                                             |
+| New: `db.batch.size`                      |                                                                                                             |
 | New: `db.response.status_code`                      |                                                                                                             |
 | New: `db.query.parameter.<key>`                     | Opt-In                                                                                                      |
 | New: `error.type`                                   |                                                                                                             |
