@@ -7,7 +7,7 @@ groups:
     attributes:
       - id: db.collection.name
         type: string
-        stability: experimental  # RELEASE CANDIDATE
+        stability: release_candidate
         brief: The name of a collection (table, container) within the database.
         note: |
           It is RECOMMENDED to capture the value as provided by the application without attempting to do any case normalization.
@@ -17,8 +17,6 @@ groups:
 
           For batch operations, if the individual operations are known to have the same collection name
           then that collection name SHOULD be used.
-
-          This attribute has stability level RELEASE CANDIDATE.
         examples: ["public.users", "customers"]
       - id: db.namespace
         type: string

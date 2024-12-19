@@ -21,7 +21,7 @@ The Semantic Conventions for [MongoDB](https://www.mongodb.com/) extend and over
 
 | Attribute  | Type | Description  | Examples  | [Requirement Level](https://opentelemetry.io/docs/specs/semconv/general/attribute-requirement-level/) | Stability |
 |---|---|---|---|---|---|
-| [`db.collection.name`](/docs/attributes-registry/db.md) | string | The MongoDB collection being accessed within the database stated in `db.namespace`. [1] | `public.users`; `customers` | `Required` | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
+| [`db.collection.name`](/docs/attributes-registry/db.md) | string | The MongoDB collection being accessed within the database stated in `db.namespace`. [1] | `public.users`; `customers` | `Required` | ![Release Candidate](https://img.shields.io/badge/-release_candidate-purple) |
 | [`db.namespace`](/docs/attributes-registry/db.md) | string | The MongoDB database name. | `customers`; `test.users` | `Conditionally Required` If available. | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
 | [`db.operation.name`](/docs/attributes-registry/db.md) | string | The name of the command being executed. [2] | `findAndModify`; `getMore`; `update` | `Conditionally Required` If readily available. | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
 | [`db.response.status_code`](/docs/attributes-registry/db.md) | string | [MongoDB error code](https://www.mongodb.com/docs/manual/reference/error-codes/) represented as a string. [3] | `36`; `11602` | `Conditionally Required` [4] | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
@@ -37,8 +37,6 @@ unless the query format is known to only ever have a single collection name pres
 
 For batch operations, if the individual operations are known to have the same collection name
 then that collection name SHOULD be used.
-
-This attribute has stability level RELEASE CANDIDATE.
 
 **[2] `db.operation.name`:** See [MongoDB database commands](https://www.mongodb.com/docs/manual/reference/command/).
 

@@ -21,7 +21,7 @@ This group defines the attributes used to describe telemetry in the context of d
 |---|---|---|---|---|
 | <a id="db-client-connection-pool-name" href="#db-client-connection-pool-name">`db.client.connection.pool.name`</a> | string | The name of the connection pool; unique within the instrumented application. In case the connection pool implementation doesn't provide a name, instrumentation SHOULD use a combination of parameters that would make the name unique, for example, combining attributes `server.address`, `server.port`, and `db.namespace`, formatted as `server.address:server.port/db.namespace`. Instrumentations that generate connection pool name following different patterns SHOULD document it. | `myDataSource` | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
 | <a id="db-client-connection-state" href="#db-client-connection-state">`db.client.connection.state`</a> | string | The state of a connection in the pool | `idle` | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
-| <a id="db-collection-name" href="#db-collection-name">`db.collection.name`</a> | string | The name of a collection (table, container) within the database. [1] | `public.users`; `customers` | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
+| <a id="db-collection-name" href="#db-collection-name">`db.collection.name`</a> | string | The name of a collection (table, container) within the database. [1] | `public.users`; `customers` | ![Release Candidate](https://img.shields.io/badge/-release_candidate-purple) |
 | <a id="db-namespace" href="#db-namespace">`db.namespace`</a> | string | The name of the database, fully qualified within the server address and port. [2] | `customers`; `test.users` | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
 | <a id="db-operation-batch-size" href="#db-operation-batch-size">`db.operation.batch.size`</a> | int | The number of queries included in a batch operation. [3] | `2`; `3`; `4` | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
 | <a id="db-operation-name" href="#db-operation-name">`db.operation.name`</a> | string | The name of the operation or command being executed. [4] | `findAndModify`; `HMSET`; `SELECT` | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
@@ -39,8 +39,6 @@ unless the query format is known to only ever have a single collection name pres
 
 For batch operations, if the individual operations are known to have the same collection name
 then that collection name SHOULD be used.
-
-This attribute has stability level RELEASE CANDIDATE.
 
 **[2] `db.namespace`:** If a database system has multiple namespace components, they SHOULD be concatenated (potentially using database system specific conventions) from most general to most specific namespace component, and more specific namespaces SHOULD NOT be captured without the more general namespaces, to ensure that "startswith" queries for the more general namespaces will be valid.
 Semantic conventions for individual database systems SHOULD document what `db.namespace` means in the context of that system.

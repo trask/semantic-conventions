@@ -84,7 +84,7 @@ of `[ 0.001, 0.005, 0.01, 0.05, 0.1, 0.5, 1, 5, 10 ]`.
 | Attribute  | Type | Description  | Examples  | [Requirement Level](https://opentelemetry.io/docs/specs/semconv/general/attribute-requirement-level/) | Stability |
 |---|---|---|---|---|---|
 | [`db.system`](/docs/attributes-registry/db.md) | string | The database management system (DBMS) product as identified by the client instrumentation. [1] | `other_sql`; `adabas`; `cache` | `Required` | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
-| [`db.collection.name`](/docs/attributes-registry/db.md) | string | The name of a collection (table, container) within the database. [2] | `public.users`; `customers` | `Conditionally Required` [3] | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
+| [`db.collection.name`](/docs/attributes-registry/db.md) | string | The name of a collection (table, container) within the database. [2] | `public.users`; `customers` | `Conditionally Required` [3] | ![Release Candidate](https://img.shields.io/badge/-release_candidate-purple) |
 | [`db.namespace`](/docs/attributes-registry/db.md) | string | The name of the database, fully qualified within the server address and port. [4] | `customers`; `test.users` | `Conditionally Required` If available. | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
 | [`db.operation.name`](/docs/attributes-registry/db.md) | string | The name of the operation or command being executed. [5] | `findAndModify`; `HMSET`; `SELECT` | `Conditionally Required` [6] | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
 | [`db.response.status_code`](/docs/attributes-registry/db.md) | string | Database response status code. [7] | `102`; `ORA-17002`; `08P01`; `404` | `Conditionally Required` [8] | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
@@ -106,8 +106,6 @@ unless the query format is known to only ever have a single collection name pres
 
 For batch operations, if the individual operations are known to have the same collection name
 then that collection name SHOULD be used.
-
-This attribute has stability level RELEASE CANDIDATE.
 
 **[3] `db.collection.name`:** If readily available and if a database call is performed on a single collection. The collection name MAY be parsed from the query text, in which case it SHOULD be the single collection name in the query.
 
@@ -265,7 +263,7 @@ Explaining bucket configuration:
 | Attribute  | Type | Description  | Examples  | [Requirement Level](https://opentelemetry.io/docs/specs/semconv/general/attribute-requirement-level/) | Stability |
 |---|---|---|---|---|---|
 | [`db.system`](/docs/attributes-registry/db.md) | string | The database management system (DBMS) product as identified by the client instrumentation. [1] | `other_sql`; `adabas`; `cache` | `Required` | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
-| [`db.collection.name`](/docs/attributes-registry/db.md) | string | The name of a collection (table, container) within the database. [2] | `public.users`; `customers` | `Conditionally Required` [3] | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
+| [`db.collection.name`](/docs/attributes-registry/db.md) | string | The name of a collection (table, container) within the database. [2] | `public.users`; `customers` | `Conditionally Required` [3] | ![Release Candidate](https://img.shields.io/badge/-release_candidate-purple) |
 | [`db.namespace`](/docs/attributes-registry/db.md) | string | The name of the database, fully qualified within the server address and port. [4] | `customers`; `test.users` | `Conditionally Required` If available. | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
 | [`db.operation.name`](/docs/attributes-registry/db.md) | string | The name of the operation or command being executed. [5] | `findAndModify`; `HMSET`; `SELECT` | `Conditionally Required` [6] | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
 | [`db.response.status_code`](/docs/attributes-registry/db.md) | string | Database response status code. [7] | `102`; `ORA-17002`; `08P01`; `404` | `Conditionally Required` [8] | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
@@ -287,8 +285,6 @@ unless the query format is known to only ever have a single collection name pres
 
 For batch operations, if the individual operations are known to have the same collection name
 then that collection name SHOULD be used.
-
-This attribute has stability level RELEASE CANDIDATE.
 
 **[3] `db.collection.name`:** If readily available and if a database call is performed on a single collection. The collection name MAY be parsed from the query text, in which case it SHOULD be the single collection name in the query.
 

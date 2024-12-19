@@ -21,7 +21,7 @@ The Semantic Conventions for [Cassandra](https://cassandra.apache.org/) extend a
 
 | Attribute  | Type | Description  | Examples  | [Requirement Level](https://opentelemetry.io/docs/specs/semconv/general/attribute-requirement-level/) | Stability |
 |---|---|---|---|---|---|
-| [`db.collection.name`](/docs/attributes-registry/db.md) | string | The name of the Cassandra table that the operation is acting upon. [1] | `public.users`; `customers` | `Conditionally Required` [2] | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
+| [`db.collection.name`](/docs/attributes-registry/db.md) | string | The name of the Cassandra table that the operation is acting upon. [1] | `public.users`; `customers` | `Conditionally Required` [2] | ![Release Candidate](https://img.shields.io/badge/-release_candidate-purple) |
 | [`db.namespace`](/docs/attributes-registry/db.md) | string | The keyspace associated with the session. [3] | `mykeyspace` | `Conditionally Required` If available. | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
 | [`db.operation.name`](/docs/attributes-registry/db.md) | string | The name of the operation or command being executed. [4] | `findAndModify`; `HMSET`; `SELECT` | `Conditionally Required` [5] | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
 | [`db.response.status_code`](/docs/attributes-registry/db.md) | string | [Cassandra protocol error code](https://github.com/apache/cassandra/blob/cassandra-5.0/doc/native_protocol_v5.spec) represented as a string. [6] | `102`; `40020` | `Conditionally Required` [7] | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
@@ -49,8 +49,6 @@ unless the query format is known to only ever have a single collection name pres
 
 For batch operations, if the individual operations are known to have the same collection name
 then that collection name SHOULD be used.
-
-This attribute has stability level RELEASE CANDIDATE.
 
 **[2] `db.collection.name`:** If readily available and if a database call is performed on a single collection. The collection name MAY be parsed from the query text, in which case it SHOULD be the single collection name in the query.
 
