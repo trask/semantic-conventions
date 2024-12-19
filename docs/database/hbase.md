@@ -21,7 +21,7 @@ The Semantic Conventions for [HBase](https://hbase.apache.org/) extend and overr
 
 | Attribute  | Type | Description  | Examples  | [Requirement Level](https://opentelemetry.io/docs/specs/semconv/general/attribute-requirement-level/) | Stability |
 |---|---|---|---|---|---|
-| [`db.collection.name`](/docs/attributes-registry/db.md) | string | The HBase table name. [1] | `mytable`; `ns:table` | `Conditionally Required` If applicable. | ![Release Candidate](https://img.shields.io/badge/-release_candidate-purple) |
+| [`db.collection.name`](/docs/attributes-registry/db.md) | string | The HBase table name. [1] | `mytable`; `ns:table` | `Conditionally Required` If applicable. | ![Release Candidate](https://img.shields.io/badge/-rc-purple) |
 | [`db.namespace`](/docs/attributes-registry/db.md) | string | The HBase namespace. [2] | `mynamespace` | `Conditionally Required` If applicable. | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
 | [`db.operation.name`](/docs/attributes-registry/db.md) | string | The name of the operation or command being executed. [3] | `findAndModify`; `HMSET`; `SELECT` | `Conditionally Required` If readily available. | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
 | [`db.response.status_code`](/docs/attributes-registry/db.md) | string | Protocol-specific response code recorded as string. [4] | `200`; `409`; `14` | `Conditionally Required` If response was received. | ![Experimental](https://img.shields.io/badge/-experimental-blue) |
