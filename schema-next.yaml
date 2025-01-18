@@ -3,6 +3,7 @@ schema_url: https://opentelemetry.io/schemas/next
 versions:
   next:
   1.30.0:
+  1.30.0:
     all:
       changes:
         # https://github.com/open-telemetry/semantic-conventions/pull/1632
