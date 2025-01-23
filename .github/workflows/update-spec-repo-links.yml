@@ -1,0 +1,47 @@
+name: Update spec repo links
+on:
+  workflow_dispatch:
+
+jobs:
+  update-spec-repo-links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use CLA approved github bot
+        run: .github/workflows/scripts/use-cla-approved-github-bot.sh
+
+      - name: Set environment variable
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          latest_version=$(gh release view \
+                               --repo open-telemetry/opentelemetry-specification \
+                               --json tagName \
+                               --jq .tagName)
+          echo "SPEC_VERSION=$latest_version" >> $GITHUB_ENV
+
+      - name: Update files
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          internal/tools/update_specification_version.sh $SPEC_VERSION
+
+          sed -i "s/^PREVIOUS_SPECIFICATION_VERSION=.*/PREVIOUS_SPECIFICATION_VERSION=$SPEC_VERSION/" internal/tools/update_specification_version.sh
+
+      - name: Create pull request
+        env:
+          # not using secrets.GITHUB_TOKEN since pull requests from that token do not run workflows
+          # GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          message="Update spec repo links to $SPEC_VERSION"
+          body="Update spec repo links to \`$SPEC_VERSION\`."
+          branch="opentelemetrybot/update-spec-repo-links-to-$SPEC_VERSION"
+
+          git checkout -b $branch
+          git commit -a -m "$message"
+          git push --set-upstream origin $branch
+          gh pr create --title "$message" \
+                       --body "$body" \
+                       --base main
