@@ -289,9 +289,9 @@ in which case the instrumentation MAY choose a different placeholder.
 
 Placeholders in a parameterized query SHOULD not be sanitized. E.g. `where id = $1` can be captured as is.
 
-[IN-clauses](https://wikipedia.org/wiki/SQL_syntax#Operators) MAY be collapsed during sanitization,
-e.g. from `IN (?, ?, ?, ?)` to `IN (?)`, as this can help with extremely long IN-clauses,
-and can help control cardinality for users who choose to (optionally) add `db.query.text` to their metric attributes.
+[IN-clauses](https://wikipedia.org/wiki/SQL_syntax#Operators) SHOULD be collapsed during sanitization,
+e.g. from `IN (?, ?, ?, ?)` to `IN (?)`, as this helps with extremely long IN-clauses,
+and helps control cardinality for users who choose to (optionally) add `db.query.text` to their metric attributes.
 
 When performing sanitization, instrumentation MAY truncate the sanitized value
 for performance considerations (since sanitizing has a performance cost).
