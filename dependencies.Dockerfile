@@ -11,3 +11,6 @@ FROM openpolicyagent/opa:1.3.0@sha256:e02dc1957f7a4195f0724762269dfe3309f1334462
 # Semconv gen is used for backwards compatibility checks.
 # TODO(jsuereth): Remove this when no longer used.
 FROM otel/semconvgen:0.25.0@sha256:9df7b8cbaa732277d64d0c0a8604d96bb6f5a36d0e96338cba5dced720c16485 AS semconvgen
+
+# Lychee is used for checking links in documentation.
+FROM lycheeverse/lychee:sha-2aa22f8@sha256:2e3786630482c41f9f2dd081e06d7da1c36d66996e8cf6573409b8bc418d48c4 AS lychee
