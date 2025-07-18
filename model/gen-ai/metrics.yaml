@@ -45,7 +45,7 @@ groups:
     annotations:
       code_generation:
         metric_value_type: int
-    brief: 'Measures number of input and output tokens used.'
+    brief: 'Number of input and output tokens used.'
     instrument: histogram
     unit: "{token}"
     stability: development

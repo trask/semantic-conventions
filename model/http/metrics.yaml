@@ -1,7 +1,7 @@
 groups:
   - id: metric_attributes.http.server
     type: attribute_group
-    brief: 'HTTP server attributes.'
+    brief: 'HTTP server attributes'
     extends: attributes.http.server
     attributes:
       - ref: server.address
@@ -22,12 +22,12 @@ groups:
         requirement_level: opt_in
   - id: metric_attributes.http.client
     type: attribute_group
-    brief: 'HTTP client attributes.'
+    brief: 'HTTP client attributes'
     extends: attributes.http.client
 
   - id: metric_attributes.http.client.experimental
     type: attribute_group
-    brief: 'HTTP client experimental attributes.'
+    brief: 'HTTP client experimental attributes'
     extends: metric_attributes.http.client
     attributes:
       - ref: url.template

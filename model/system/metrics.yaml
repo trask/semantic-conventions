@@ -154,7 +154,7 @@ groups:
       code_generation:
         metric_value_type: double
     stability: development
-    brief: "."
+    brief: "System memory utilization."
     instrument: gauge
     unit: "1"
     attributes:
@@ -188,7 +188,7 @@ groups:
       code_generation:
         metric_value_type: double
     stability: development
-    brief: "."
+    brief: "System paging utilization."
     instrument: gauge
     unit: "1"
     attributes:
@@ -206,7 +206,7 @@ groups:
       code_generation:
         metric_value_type: int
     stability: development
-    brief: "."
+    brief: "System paging faults."
     instrument: counter
     unit: "{fault}"
     attributes:
@@ -221,7 +221,7 @@ groups:
     annotations:
       code_generation:
         metric_value_type: int
-    brief: "."
+    brief: "System paging operations."
     instrument: counter
     unit: "{operation}"
     attributes:

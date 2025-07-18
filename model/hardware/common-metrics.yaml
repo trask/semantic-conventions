@@ -2,7 +2,7 @@ groups:
   # COMMON METRICS
   - id: metric.hw.attributes
     type: attribute_group
-    brief: "Attributes for hardware metrics."
+    brief: "Attributes for hardware metrics"
     extends: hardware.attributes.common
     attributes:
       - ref: hw.type
@@ -33,7 +33,7 @@ groups:
     extends: metric.hw.attributes
     attributes:
       - ref: error.type
-        brief: "The type of error encountered by the component."
+        brief: "The type of error encountered by the component"
         examples: ['uncorrected', 'zero_buffer_credit', 'crc', 'bad_sector']
         requirement_level:
           conditionally_required: if and only if an error has occurred
