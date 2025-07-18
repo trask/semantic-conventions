@@ -1,7 +1,7 @@
 groups:
   - id: common.kestrel.attributes
     type: attribute_group
-    brief: 'Common kestrel attributes'
+    brief: 'Common kestrel attributes.'
     attributes:
       - ref: server.address
       - ref: server.port

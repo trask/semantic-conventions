@@ -1,7 +1,7 @@
 groups:
   - id: aspnetcore.common.rate_limiting.metrics.attributes
     type: attribute_group
-    brief: Common ASP.NET Core rate-limiting metrics attributes
+    brief: Common ASP.NET Core rate-limiting metrics attributes.
     attributes:
       - ref: aspnetcore.rate_limiting.policy
         requirement_level:
