@@ -1,7 +1,7 @@
 groups:
   - id: metric_attributes.gen_ai
     type: attribute_group
-    brief: 'This group describes GenAI metrics attributes.'
+    brief: 'This group describes GenAI metrics attributes'
     attributes:
       - ref: server.address
         brief: GenAI server address.
@@ -21,7 +21,7 @@ groups:
         requirement_level: required
   - id: metric_attributes.gen_ai.server
     type: attribute_group
-    brief: 'This group describes GenAI server metrics attributes.'
+    brief: 'This group describes GenAI server metrics attributes'
     extends: metric_attributes.gen_ai
     attributes:
       - ref: error.type
@@ -33,7 +33,7 @@ groups:
           Instrumentations SHOULD document the list of errors they report.
   - id: metric_attributes.openai
     type: attribute_group
-    brief: 'This group describes GenAI server metrics attributes.'
+    brief: 'This group describes GenAI server metrics attributes'
     attributes:
       - ref: openai.response.service_tier
         requirement_level: recommended
