@@ -24,6 +24,9 @@ deny contains metric_brief_violation(description, group.id) if {
     
     # Remove leading/trailing whitespace and check if it ends with period
     trimmed_brief := trim(brief, " \t\n\r")
+    
+    # Allow empty briefs - only check non-empty ones
+    trimmed_brief != ""
     not endswith(trimmed_brief, ".")
     
     description := sprintf("Metric brief '%s' should end with a period (.). Metric briefs must end with a period.", [trimmed_brief])

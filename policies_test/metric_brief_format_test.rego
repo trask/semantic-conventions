@@ -55,3 +55,15 @@ test_metric_without_brief if {
         {"id": "metric.test", "type": "metric", "stability": "development"}
     ]}
 }
+
+test_metric_with_empty_brief if {
+    # Should pass: metric with empty brief is allowed
+    count(before_resolution.deny) == 0 with input as {"groups": [
+        {"id": "metric.test", "type": "metric", "brief": "", "stability": "development"}
+    ]}
+    
+    # Should pass: metric with whitespace-only brief is treated as empty and allowed
+    count(before_resolution.deny) == 0 with input as {"groups": [
+        {"id": "metric.test2", "type": "metric", "brief": "   ", "stability": "development"}
+    ]}
+}
