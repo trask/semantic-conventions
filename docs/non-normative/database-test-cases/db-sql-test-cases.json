@@ -231,7 +231,7 @@
             "db.query.text": [
                 "SELEcT order_date\nFROM   (sELECT *\nFROM   orders o\nJOIN customers c\nON o.customer_id = c.customer_id)"
             ],
-            "db.query.summary": "SELEcT sELECT orders customers"
+            "db.query.summary": "SELECT SELECT orders customers"
         }
     },
     {
@@ -244,7 +244,7 @@
             "db.query.text": [
                 "SELEcT order_date\nFROM ORders"
             ],
-            "db.query.summary": "SELEcT ORders"
+            "db.query.summary": "SELECT ORders"
         }
     },
     {
