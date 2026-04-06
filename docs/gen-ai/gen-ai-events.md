@@ -255,6 +255,8 @@ This event captures the result of evaluating GenAI output for quality, accuracy,
 | [`gen_ai.evaluation.score.value`](/docs/registry/attributes/gen-ai.md) | ![Development](https://img.shields.io/badge/-development-blue) | `Conditionally Required` if applicable | double | The evaluation score returned by the evaluator. | `4.0` |
 | [`gen_ai.evaluation.explanation`](/docs/registry/attributes/gen-ai.md) | ![Development](https://img.shields.io/badge/-development-blue) | `Recommended` | string | A free-form explanation for the assigned score provided by the evaluator. | `The response is factually accurate but lacks sufficient detail to fully address the question.` |
 | [`gen_ai.response.id`](/docs/registry/attributes/gen-ai.md) | ![Development](https://img.shields.io/badge/-development-blue) | `Recommended` when available | string | The unique identifier for the completion. [3] | `chatcmpl-123` |
+| [`gen_ai.usage.input_tokens`](/docs/registry/attributes/gen-ai.md) | ![Development](https://img.shields.io/badge/-development-blue) | `Recommended` | int | The number of tokens used in the GenAI input (prompt). [4] | `100` |
+| [`gen_ai.usage.output_tokens`](/docs/registry/attributes/gen-ai.md) | ![Development](https://img.shields.io/badge/-development-blue) | `Recommended` | int | The number of tokens used in the GenAI response (completion). [5] | `180` |
 
 **[1] `error.type`:** The `error.type` SHOULD match the error code returned by the Generative AI Evaluation provider or the client library,
 the canonical name of exception that occurred, or another low-cardinality error identifier.
@@ -265,6 +267,10 @@ Instrumentations SHOULD document the list of errors they report.
 **[3] `gen_ai.response.id`:** The unique identifier assigned to the specific
 completion being evaluated. This attribute helps correlate the evaluation
 event with the corresponding operation when span id is not available.
+
+**[4] `gen_ai.usage.input_tokens`:** The number of input tokens consumed by the evaluation process for this evaluation metric.
+
+**[5] `gen_ai.usage.output_tokens`:** The number of output tokens consumed by the evaluation process for this evaluation metric.
 
 ---
 

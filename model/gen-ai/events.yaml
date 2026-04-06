@@ -30,6 +30,14 @@ groups:
           conditionally_required: if applicable
       - ref: gen_ai.evaluation.explanation
         requirement_level: recommended
+      - ref: gen_ai.usage.input_tokens
+        requirement_level: recommended
+        note: >
+          The number of input tokens consumed by the evaluation process for this evaluation metric.
+      - ref: gen_ai.usage.output_tokens
+        requirement_level: recommended
+        note: >
+          The number of output tokens consumed by the evaluation process for this evaluation metric.
       - ref: gen_ai.response.id
         requirement_level:
           recommended: when available
