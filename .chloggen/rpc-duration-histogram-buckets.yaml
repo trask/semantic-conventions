@@ -4,6 +4,6 @@ note: Refine the recommended RPC call duration histogram bucket boundaries.
 # Add a tracking issue or PR number before publishing.
 issues: []
 subtext: |
-  Adds intermediate boundaries using a 1-2-5 progression for both RPC client
+  Adds intermediate boundaries using a 1-2.5-5 progression for both RPC client
   and server call duration histograms through 10 seconds, followed by boundaries
-  at 30, 60, and 120 seconds. System-specific recommendations remain unchanged.
+  at 30, 60, and 150 seconds. System-specific recommendations remain unchanged.
