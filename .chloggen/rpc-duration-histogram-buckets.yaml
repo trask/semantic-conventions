@@ -1,0 +1,8 @@
+change_type: enhancement
+component: rpc
+note: Use a 1-2-5 progression for the recommended RPC call duration histogram bucket boundaries.
+# Add a tracking issue or PR number before publishing.
+issues: []
+subtext: |
+  Adds intermediate boundaries using a 1-2-5 progression for both RPC client
+  and server call duration histograms. System-specific recommendations remain unchanged.
